@@ -3,7 +3,9 @@ ARG NODE_VERSION=16-alpine3.12
 FROM node:${NODE_VERSION}
 
 LABEL name="billify360"
+
 LABEL license="MIT"
+
 LABEL description="MERN invoice image"
 
 ENV NODE_ENV=development
@@ -16,6 +18,7 @@ RUN addgroup --system invoice \
     && adduser --system --ingroup invoice invoice
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY --chown=invoice:invoice . ${APP_HOME}
