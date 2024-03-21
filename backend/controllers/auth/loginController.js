@@ -44,7 +44,7 @@ const loginUser = asyncHandler(async (req, res) => {
         roles: existingUser.roles,
       },
       process.env.JWT_ACCESS_SECRET_KEY,
-      { expiresIn: '10m' }
+      { expiresIn: '1h' }
     );
 
     const newRefreshToken = jwt.sign(
@@ -64,8 +64,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if (cookies?.jwt) {
       const refreshToken = cookies.jwt;
       const existingRefreshToken = await User.findOne({
-        // refreshToken,
-        refreshToken: { $in: [refreshToken] },
+        refreshToken,
       }).exec();
 
       if (!existingRefreshToken) {
