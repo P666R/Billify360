@@ -7,6 +7,7 @@ import connectionToDB from './config/connectDB.js';
 import { morganMiddleware, systemLogs } from './utils/Logger.js';
 import mongoSanitize from 'express-mongo-sanitize';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
+import authRoutes from './routes/authRoutes.js';
 
 await connectionToDB();
 
@@ -31,6 +32,8 @@ app.get('/api/v1/test', (req, res) => {
     Hi: 'Welcome to the Billify360 app',
   });
 });
+
+app.use('/api/v1/auth', authRoutes);
 
 app.use(notFound);
 
