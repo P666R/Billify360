@@ -36,7 +36,7 @@ const resendEmailVerificationToken = asyncHandler(async (req, res) => {
   });
 
   if (verificationToken) {
-    await VerificationToken.deleteOne();
+    await VerificationToken.deleteOne({ _id: verificationToken._id });
   }
 
   const resentToken = randomBytes(32).toString('hex');
