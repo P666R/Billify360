@@ -75,6 +75,7 @@ const resetPassword = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('A password is required');
   }
+
   if (!passwordConfirm) {
     res.status(400);
     throw new Error('A confirm password field is required');

@@ -63,6 +63,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     if (cookies?.jwt) {
       const refreshToken = cookies.jwt;
+
       const existingRefreshToken = await User.findOne({
         refreshToken,
       }).exec();

@@ -24,6 +24,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('A username is required');
   }
+
   if (!firstName || !lastName) {
     res.status(400);
     throw new Error('You must enter a full name with a first and last name');
@@ -33,6 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('You must enter a password');
   }
+
   if (!passwordConfirm) {
     res.status(400);
     throw new Error('Confirm password field is required');

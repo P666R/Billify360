@@ -1,6 +1,10 @@
 import asyncHandler from 'express-async-handler';
 import User from '../../models/userModel.js';
 
+// $-title   Logout User
+// $-path    GET /api/v1/auth/logout
+// $-auth    Public
+
 const logoutUser = asyncHandler(async (req, res) => {
   const cookies = req.cookies;
 

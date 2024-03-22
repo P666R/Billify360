@@ -18,6 +18,7 @@ const verifyUserEmail = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('We were unable to find a user for this token');
   }
+
   if (user.isEmailVerified) {
     res.status(400).send('This user has already been verified. Please login');
   }

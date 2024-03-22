@@ -22,6 +22,7 @@ const newAccessToken = asyncHandler(async (req, res) => {
     secure: true,
     sameSite: 'None',
   };
+
   res.clearCookie('jwt', options);
 
   const existingUser = await User.findOne({ refreshToken }).exec();
@@ -34,9 +35,11 @@ const newAccessToken = asyncHandler(async (req, res) => {
         if (err) {
           return res.sendStatus(403);
         }
+
         const hackedUser = await User.findOne({
           _id: decoded.id,
         }).exec();
+
         hackedUser.refreshToken = [];
         await hackedUser.save();
       }
